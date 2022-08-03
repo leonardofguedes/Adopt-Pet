@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+{% include 'dogncat/partials/head.html' %}
+</head>
+
+
+<body>
+    {% include 'dogncat/partials/header.html' %}
+
+    <main class="main-content-container">
+        {% block content %}{% endblock content %}
+    </main>
+
+    {% include 'dogncat/partials/pagination.html' %}
+    {% include 'dogncat/partials/footer.html' %}
+</body>
+
+</html>

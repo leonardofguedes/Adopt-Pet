@@ -1,0 +1,88 @@
+<div class="animal animal-list-item">
+
+    {% if is_detail_page is not True %}
+    {% if animal.cover %}
+        <div class="animal-cover">
+            <a href="{% url 'dogncat:animal' animal.pk %}">
+                <img src="{{ animal.cover.url }}" alt="Temporário">
+            </a>
+        </div>
+    {% endif %}
+    {% endif %}
+
+    {% if is_detail_page is True %}
+        <div class="animal-cover">
+            {% include 'dogncat/partials/carousel.html' %}
+        </div>
+    {% endif %}
+
+
+    <div class="animal-title-container">
+            <h2 class="animal-title">
+                <a href="{% url 'dogncat:animal' animal.pk %}">
+                    {{ animal.title }}
+                </a>
+            </h2>
+    </div>
+
+    <div class="animal-author">
+        {% if animal.author is not None %}
+            <span class="animal-author-item">
+                <i class="fas fa-user"></i>
+                {% if animal.author.first_name %}
+                    {{ animal.author.first_name }} {{ animal.author.last_name }}
+                {% else %}
+                    {{ animal.author.username }}
+                {% endif %}
+            </span>
+        {% endif %}
+
+        <span class="animal-author-item">
+            <i class="fas fa-calendar-alt"></i>
+            {{ animal.created_at|date:"d/m/Y" }} às {{ animal.created_at|date:"H:i" }}
+        </span>
+
+        <span class="animal-author-item">
+            <a href="{% url 'dogncat:animal-type' animal.type_of_animal.id %}">
+                <i class="fas fa-layer-group"></i>
+                <span>{{ animal.type_of_animal.name }}</span>
+            </a>
+        </span>
+    </div>
+
+    <div class="animal-content">
+        <p>{{ animal.description }}</p>
+    </div>
+
+    <div class="animal-meta-container">
+        <div class="animal-meta animal-weight">
+            <h3 class="animal-meta-title"> Peso</h3>
+            <div class="animal-meta-text">
+                {{ animal.peso }} kg
+            </div>
+        </div>
+        <div class="animal-meta animal-age">
+            <h3 class="animal-meta-title"> Idade</h3>
+            <div class="animal-meta-text">
+                {{ animal.idade }} anos
+            </div>
+        </div>
+        <div class="animal-meta animal-age">
+            <h3 class="animal-meta-title"> Castração</h3>
+            <div class="animal-meta-text">
+                {{ animal.castracao }}
+            </div>
+        </div>
+    </div>
+
+    {% if is_detail_page is not True %}
+    <footer class="animal-footer">
+        <a class="animal-read-more button button-dark button-full-width" href="{% url 'dogncat:animal' animal.id %}">
+            <i class="fas fa-eye"></i>
+            <span>ver mais fotos...</span>
+        </a>
+    </footer>
+    {% endif %}
+
+
+</div>
