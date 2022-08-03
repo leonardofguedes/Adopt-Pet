@@ -15,3 +15,7 @@ class ViewTest(TestCase):
     def test_dashboard_view_function(self):
         resolved = resolve(reverse('dashboard'))
         self.assertIs(resolved.func, dashboard)
+
+    def test_logout_view_function(self):
+        resolved = resolve(reverse('logout'))
+        self.assertIs(resolved.func, logout)
