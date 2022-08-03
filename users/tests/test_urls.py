@@ -7,6 +7,10 @@ class UsersURLTest(TestCase):
         url = reverse('cadastro')
         self.assertEqual(url, '/user/cadastro/')
 
+    def test_users_login_is_correct(self):
+        url = reverse('login')
+        self.assertEqual(url, '/user/login/')
+
 """
 urlpatterns = [
     path('cadastro', views.cadastro, name='cadastro'),
