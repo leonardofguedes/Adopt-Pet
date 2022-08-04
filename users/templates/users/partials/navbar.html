@@ -1,11 +1,16 @@
-<ul>
-    {% if user.is_authenticated %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+  <div class='container'>
+      <ul class="navbar-nav mr-auto">
+        {% if user.is_authenticated %}
         <li><a href="{% url 'dogncat:home' %}">Página principal</a></li>
-        <li><a href="{% url 'dashboard' %}">Minhas receitas</a></li>
+        <li><a href="{% url 'dashboard' %}">Pets adicionados pelo usuário</a></li>
+        <li><a href="{% url 'newpet' %}">Adicione um pet</a></li>
         <li><a href="{% url 'logout' %}">Logout</a></li>
-    {% else %}
+        {% else %}
         <li><a href="{% url 'dogncat:home' %}">Página principal</a></li>
         <li><a href="{% url 'cadastro' %}">Cadastro</a></li>
         <li><a href="{% url 'login' %}">Login</a></li>
-  {% endif %}
-</ul>
+        {% endif %}
+      </ul>
+  </div><!--fim container-->
+</nav>
