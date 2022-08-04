@@ -4,7 +4,7 @@ from .pagination import make_pagination
 
 def home_view(request):
     animals = Animal.objects.filter(
-        is_published=True
+        is_staff=True
     ).order_by('-id')
 
 
@@ -20,8 +20,7 @@ def home_view(request):
 def by_animal_type_view(request, type_id):
     animals = get_list_or_404(
         Animal.objects.filter(
-            type_of_animal__id=type_id,
-            is_published=True,
+            type_of_animal__id=type_id
         ).order_by('-id')
     )
     return render(request, 'dogncat/pages/by_animal_type.html', context={
@@ -30,7 +29,7 @@ def by_animal_type_view(request, type_id):
 
 
 def animal(request, id):
-    animal = get_object_or_404(Animal, pk=id, is_published=True,)
+    animal = get_object_or_404(Animal, pk=id, is_staff=True,)
     photos = Photo.objects.filter(animal=animal)
     return render(request, 'dogncat/pages/one_only.html', context={
         'animal': animal,
