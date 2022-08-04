@@ -42,7 +42,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('home')
+    return redirect('dogncat:home')
 
 def dashboard(request):
     if request.user.is_authenticated:
