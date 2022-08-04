@@ -1,3 +1,4 @@
+from django.contrib import auth
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
@@ -23,7 +24,21 @@ def cadastro(request):
         return render(request, 'users/pages/cadastro.html')
 
 def login(request):
-    return render(request, 'users/pages/login.html')
+    if request.method == 'POST':
+        email = request.POST['email']
+        senha = request.POST['senha']
+        if email == '' or senha == '':
+            return redirect(request, 'users/pages/login.html')
+        if User.objects.filter(email=email).exists():
+            nome = User.objects.filter(email=email).values_list('username', flat=True).get()
+            user = auth.authenticate(request, username=nome, password=senha)
+            if user is not None:
+                auth.login(request, user)
+                return redirect('dashboard')
+        else:
+            return redirect(request, 'users/pages/login.html')
+    else:
+        return render(request, 'users/pages/login.html')
 
 def logout(request):
     pass
