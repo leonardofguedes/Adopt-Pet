@@ -259,3 +259,16 @@
         .pagination .page-current{
             background: var(--color-primary-dark);
         }
+        .btn-form-create {
+          border: none;
+          cursor: pointer;
+          background: #aaaaaa;
+          color: #ffffff;
+          display: inline-block;
+          margin: 0 -2px;
+          padding: 5px 10px;
+          border: 1px solid #666666;
+        }
+        .contact-area {
+            line-height: 1.8;
+        }
