@@ -1,0 +1,78 @@
+{% extends 'dogncat/partials/base.html' %}
+{% load static %}
+{% block content %}
+{% include 'users/partials/messages.html' %}
+<!-- ##### Contact Form Area Start ##### -->
+<div class="contact-area">
+   <div class="container">
+       <div class="row">
+           <div class="col-12">
+               <div class="section-heading">
+                   <h3>Adicione um animal, {{ user.username }} :)</h3>
+               </div>
+           </div>
+       </div>
+ 
+       <div class="row">
+           <div class="col-12">
+           <p>Todos os campos são obrigatórios</p>
+               <div class="contact-form-area">
+                   <form action="{% url 'newpet' %}" method="POST" enctype="multipart/form-data">
+                           {% csrf_token %}
+                       <div class="row">
+                           <div class="col-12 col-lg-12">
+                               <label for="nome"><b>Nome</b></label>
+                               <input type="text" id="nome" class="form-control" name="nome" placeholder="Ex. Milka" required>
+                           </div>
+                           <div class="col-12 col-lg-12">
+                               <label for="cidade"><b>Cidade</b></label>
+                               <input type="text" id="cidade" class="form-control" name="cidade" placeholder="Ex. Porto Alegre" required>
+                           </div>
+                           <div class="col-12">
+                               <label for="file"><b>Características</b></label>
+                               <textarea class="form-control" name="caracteristicas" cols="30" rows="10" placeholder="Ex. Amigável &#10;Tímido &#10;Brincalhão" required></textarea>
+                           </div>
+                           <div class="col-12">
+                               <label for="file"><b>Porte</b></label>
+                               <SELECT name="porte">
+                                <OPTION VALUE="Pequeno" SELECTED>Pequeno
+                                <OPTION VALUE="Médio">Médio
+                                <OPTION VALUE="Grande">Grande
+                                </SELECT>
+                           </div>
+                           <div class="col-12">
+                               <label for="file"><b>Castração</b></label>
+                               <SELECT name="castracao">
+                                <OPTION VALUE="Indefinido" SELECTED>Indefinido
+                                <OPTION VALUE="Pendente">Pendente
+                                <OPTION VALUE="Feita">Feita
+                                </SELECT>
+                           </div>
+                           <div class="col-12">
+                               <label for="file"><b>Tipo de Animal</b></label>
+                               <SELECT name="tipodeanimal">
+                                <OPTION VALUE="Cachorro" SELECTED>Cachorro
+                                <OPTION VALUE="Gato">Gato
+                                <OPTION VALUE="Outro">Outro
+                                </SELECT>
+                           </div>
+                           <div class="col-12 col-lg-3">
+                               <label for="file"><b>Foto1</b></label>
+                               <input type="file" class="form-control" name="foto_pet" required>
+                           </div>
+                           <p><br/></p>
+                           <br/>
+                           <p></p>
+                           <div class="col-11">
+                               <br/>
+                               <button class="btn-form-create" type="submit">Adicionar</button>
+                           </div>
+                       </div>
+                   </form>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+
+{% endblock %}
