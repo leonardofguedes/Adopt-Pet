@@ -1,6 +1,7 @@
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from dogncat.models import Animal
 
 
 def cadastro(request):
@@ -14,14 +15,17 @@ def cadastro(request):
         if not email.strip():
             return redirect('cadastro')
         if senha!= senha2:
+            messages.error(request, 'As senhas não são iguais')
             return redirect('cadastro')
         if User.objects.filter(email=email).exists():
             return redirect('cadastro')
         user = User.objects.create_user(username=nome, email=email, password=senha)
         user.save()
+        messages.success(request, 'Cadastro realizado com sucesso')
         return redirect('login')
     else:
         return render(request, 'users/pages/cadastro.html')
+
 
 def login(request):
     if request.method == 'POST':
@@ -40,12 +44,49 @@ def login(request):
     else:
         return render(request, 'users/pages/login.html')
 
+
 def logout(request):
     auth.logout(request)
     return redirect('dogncat:home')
 
+
 def dashboard(request):
     if request.user.is_authenticated:
-        return render(request, 'users/pages/dashboard.html')
+        id = request.user.id
+        animais = Animal.objects.order_by('-created_at').filter(author=id)
+
+        dados = {
+            'animais' : animais
+        }
+        return render(request, 'users/pages/dashboard.html', dados)
     else:
-        return redirect('login')
+        return redirect('index')
+
+
+def newpet(request):
+    if request.method == 'POST':
+        nome = request.POST['nome']
+        description = request.POST['caracteristicas']
+        cidade = request.POST['cidade']
+        porte = request.POST['porte']
+        castracao = request.POST['castracao']
+        type_of_animal = request.POST['tipodeanimal']
+        cover = request.FILES['foto_pet']
+        user = get_object_or_404(User, pk=request.user.id)
+        animal = Animal.objects.create(
+            author=user,
+            name=nome,
+            description=description,
+            cidade=cidade,
+            cover=cover,
+            type_of_animal=type_of_animal,
+            porte=porte,
+            castracao=castracao)
+        if animal:
+            animal.save()
+            messages.success(request, 'Animal cadastrado com sucesso')
+            return redirect('dashboard')
+        else:
+            print('mensagem')
+    else:
+        return render(request, 'users/pages/pet_add_form.html')
