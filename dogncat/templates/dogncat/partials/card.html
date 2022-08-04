@@ -20,7 +20,7 @@
     <div class="animal-title-container">
             <h2 class="animal-title">
                 <a href="{% url 'dogncat:animal' animal.pk %}">
-                    {{ animal.title }}
+                    {{ animal.name }}
                 </a>
             </h2>
     </div>
@@ -42,12 +42,6 @@
             {{ animal.created_at|date:"d/m/Y" }} às {{ animal.created_at|date:"H:i" }}
         </span>
 
-        <span class="animal-author-item">
-            <a href="{% url 'dogncat:animal-type' animal.type_of_animal.id %}">
-                <i class="fas fa-layer-group"></i>
-                <span>{{ animal.type_of_animal.name }}</span>
-            </a>
-        </span>
     </div>
 
     <div class="animal-content">
