@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 def cadastro(request):
     return render(request, 'users/pages/cadastro.html')
 
