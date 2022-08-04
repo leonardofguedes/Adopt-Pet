@@ -41,7 +41,8 @@ def login(request):
         return render(request, 'users/pages/login.html')
 
 def logout(request):
-    pass
+    auth.logout(request)
+    return redirect('home')
 
 def dashboard(request):
     pass
