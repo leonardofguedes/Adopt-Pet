@@ -32,7 +32,8 @@ def login(request):
         email = request.POST['email']
         senha = request.POST['senha']
         if email == '' or senha == '':
-            return redirect(request, 'users/pages/login.html')
+            messages.error(request, 'Os campos email e senha não podem ficar em branco')
+            return redirect('login')
         if User.objects.filter(email=email).exists():
             nome = User.objects.filter(email=email).values_list('username', flat=True).get()
             user = auth.authenticate(request, username=nome, password=senha)
@@ -40,10 +41,10 @@ def login(request):
                 auth.login(request, user)
                 return redirect('dashboard')
         else:
-            return redirect(request, 'users/pages/login.html')
-    else:
-        return render(request, 'users/pages/login.html')
+            messages.error(request, 'O usuário não existe')
+            return redirect('login')
 
+    return render(request, 'users/pages/login.html')
 
 def logout(request):
     auth.logout(request)
@@ -60,7 +61,7 @@ def dashboard(request):
         }
         return render(request, 'users/pages/dashboard.html', dados)
     else:
-        return redirect('index')
+        return redirect('login')
 
 
 def newpet(request):
