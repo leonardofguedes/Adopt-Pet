@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Type_of_animal, Animal, Photo
+from .models import Animal, Photo
 
 
 class PhotoAdmin(admin.StackedInline):
@@ -12,9 +12,6 @@ class AnimalAdmin(admin.ModelAdmin):
     class Meta:
         model = Animal
 
-@admin.register(Type_of_animal)
-class Type_of_Animal_Admin(admin.ModelAdmin):
-    model = Type_of_animal
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
