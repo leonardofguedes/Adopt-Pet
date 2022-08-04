@@ -1,11 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Type_of_animal(models.Model):
-    name = models.CharField(max_length=65)
-
-    def __str__(self):
-        return self.name
 
 class Animal(models.Model):
     name = models.CharField(max_length=65)
@@ -16,9 +11,6 @@ class Animal(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_staff = models.BooleanField(default=False)
-    type_of_animal = models.ForeignKey(
-        Type_of_animal, on_delete=models.SET_NULL, null=True, blank=True, default=None
-    )
     cover = models.ImageField(upload_to='animals/covers/%Y/%m/%d/', blank=True, default='')
     type_of_animal = models.CharField(blank=False, null=False, default='U', max_length=25)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
