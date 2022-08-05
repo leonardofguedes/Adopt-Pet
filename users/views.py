@@ -55,7 +55,6 @@ def dashboard(request):
     if request.user.is_authenticated:
         id = request.user.id
         animais = Animal.objects.order_by('-created_at').filter(author=id)
-
         dados = {
             'animais' : animais
         }
