@@ -1,11 +1,22 @@
-<nav class="navbarhome">
-    {% if user.is_authenticated %}
-    <a href="{% url 'dogncat:home' %}">Página principal</a>
-    <a href="{% url 'dashboard' %}">Pets adicionados pelo usuário</a>
-    <a href="{% url 'newpet' %}">Adicione um pet</a>
-    <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-    <a href="{% url 'dogncat:home' %}">Página principal</a>
-    <a href="{% url 'login' %}">Login</a>
-    {% endif %}
-</nav>
+<button class="button-show-menu button-show-menu-visible">
+  <i class="fas fa-bars"></i>
+  <span class="hidden-text">Show menu</span>
+</button>
+
+<div class="menu-container menu-hidden">
+  <button class="button-close-menu button-close-menu-visible">
+    <i class="fas fa-times-circle"></i>
+    <span class="hidden-text">Close menu</span>
+  </button>
+
+  <div class="menu-content">
+    <nav class="menu-nav">
+      <a href="{% url 'dogncat:home' %}">Home</a>
+    </nav>
+  </div>
+  <div class="menu-content">
+    <nav class="menu-nav">
+      <a href="{% url 'dashboard' %}">Administrativo</a>
+    </nav>
+  </div>
+</div>
