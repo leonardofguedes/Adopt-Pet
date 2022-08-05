@@ -30,7 +30,7 @@ def by_animal_type_view(request, type_id):
 
 def animal(request, id):
     animal = get_object_or_404(Animal, pk=id, is_staff=True,)
-    photos = Photo.objects.filter(animal=animal)
+    photos = [animal.photo_detail, animal.photo_detail_two, animal.photo_detail_three]
     return render(request, 'dogncat/pages/one_only.html', context={
         'animal': animal,
         'is_detail_page':True,
