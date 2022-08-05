@@ -1,0 +1,13 @@
+{% load static %}
+
+<head>
+{% include 'users/partials/base_head.html' %}
+</head>
+
+<body>
+    {% include 'users/partials/navbar.html' %}
+    {% block content %}{% endblock content %}
+
+     <script src="{% static 'dogncat/js/scripts.js' %}"></script>
+</body>
+
