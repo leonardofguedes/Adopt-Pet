@@ -9,15 +9,13 @@
                <div class="section-heading">
                    <h3>Olá {{ user.username }}, seja bem-vindo(a).</h3>
                </div>
-               {% if animal %}
                <div>
                    {% for animal in animais %}
-                   {{ animal.name }}
+                   {{ animal.name }} <br>
+                   {% empty %}
+                   <h3>Você não tem animal cadastrado até o momento.</h3>
                    {% endfor %}
                </div>
-               {% else %}
-               <h3>Você não tem animal cadastrado até o momento.</h3>
-               {% endif %}
            </div>
        </div>
    </div>
