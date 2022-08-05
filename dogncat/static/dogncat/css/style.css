@@ -142,6 +142,8 @@
             padding-top: 0;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            line-height: 100vh;
         }
         .container-detail-page {
             max-width: 144rem;
@@ -168,6 +170,12 @@
         .animal-list-item {
             max-width: 64rem;
             height: fit-content;
+        }
+
+        .animal-list-item-detail {
+            max-width: 64rem;
+            height: fit-content;
+            margin: center;
         }
 
         .animal-list-item:hover {
