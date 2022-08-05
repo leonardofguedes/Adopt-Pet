@@ -1,7 +1,10 @@
 {% extends 'dogncat/partials/base.html' %}
+{% load static %}
+
 {% block content %}
-{% include 'dogncat/partials/navhome.html' %}
-        <div class="main-content-detail-page main-content-list-detail-page container-detail-page">
-            {% include 'dogncat/partials/card.html' %}
-        </div>
-{% endblock content %}
+
+    <div class="cards">
+            {% include 'dogncat/partials/card_test.html' %}
+    </div>
+
+{% endblock %}
