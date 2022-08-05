@@ -1,16 +1,17 @@
 {% extends 'dogncat/partials/base.html' %}
+{% load static %}
 
 {% block content %}
-{% include 'dogncat/partials/navhome.html' %}
-        <div class="main-content main-content-list container">
-            {% for animal in animals %}
-                {% include 'dogncat/partials/card.html' %}
-            {% empty %}
+
+    <div class="cards">
+        {% for animal in animals %}
+            {% include 'dogncat/partials/card_test.html' %}
+        {% empty %}
                 <div class="center m-y">
                     <h1>Nenhum animal cadastrado ainda</h1>
                 </div>
-            {% endfor %}
-        </div>
-{% endblock content %}
+        {% endfor %}
+    </div>
 
+{% endblock %}
 
