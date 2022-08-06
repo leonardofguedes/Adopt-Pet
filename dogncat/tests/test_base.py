@@ -7,10 +7,6 @@ class TestBase(TestCase):
     def setUp(self) -> None:
         return super().setUp()
 
-    def make_animal_type(self, name='Animal type Test'):
-        """Método que cria um animal type"""
-        return Type_of_animal.objects.create(name=name)
-
     def make_author(self,
                     first_name='user',
                     last_name='name',
