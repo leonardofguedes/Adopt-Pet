@@ -35,7 +35,7 @@ class DognCatModelTeste(TestBase):
         animal = Animal(
             type_of_animal='Tipo de ANimal',
             author=self.make_author(username='newuser'),
-            title='Test Title',
+            name='Test Title',
             description='Descript Test',
             slug='test-slug-1000',
             castracao='Feita',
