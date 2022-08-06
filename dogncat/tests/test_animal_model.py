@@ -50,7 +50,7 @@ class DognCatModelTeste(TestBase):
         """Teste para confirmar o is_published > default = False"""
         animal = self.make_dogncat_no_default_field()
         self.assertFalse(
-            animal.is_published,
+            animal.is_staff,
             msg='O is_published default é Falso, não podendo ser omitido esse field'
         )
 
