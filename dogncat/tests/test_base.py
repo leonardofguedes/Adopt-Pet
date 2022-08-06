@@ -26,7 +26,7 @@ class TestBase(TestCase):
                     name='Test Title',
                     description='Descript Test',
                     castracao='Feita',
-                    peso=5,
+                    porte='Médio',
                     idade=5,
                     cidade='Maceio',
                     is_staff=True):
