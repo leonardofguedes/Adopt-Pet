@@ -45,5 +45,5 @@ class TestBase(TestCase):
             peso=peso,
             idade=idade,
             cidade=cidade,
-            is_published=is_published,
+            is_staff=is_staff,
         )
