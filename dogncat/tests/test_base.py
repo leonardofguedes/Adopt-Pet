@@ -40,7 +40,7 @@ class TestBase(TestCase):
             name=name,
             description=description,
             castracao=castracao,
-            peso=peso,
+            porte=porte,
             idade=idade,
             cidade=cidade,
             is_staff=is_staff,
