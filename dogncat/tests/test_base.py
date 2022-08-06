@@ -1,5 +1,5 @@
 from django.test import TestCase
-from dogncat.models import Animal, Type_of_animal
+from dogncat.models import Animal
 from django.contrib.auth.models import User
 
 
