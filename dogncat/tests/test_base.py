@@ -23,7 +23,7 @@ class TestBase(TestCase):
     def make_animal(self,
                     author_data=None,
                     type_of_animal='Cachorro',
-                    title='Test Title',
+                    name='Test Title',
                     description='Descript Test',
                     castracao='Feita',
                     peso=5,
