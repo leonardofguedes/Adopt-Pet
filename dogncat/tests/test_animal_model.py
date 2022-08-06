@@ -16,7 +16,7 @@ class DognCatModelTeste(TestBase):
             self.dogncat.full_clean()
 
     @parameterized.expand([
-        ('title', 65),
+        ('name', 65),
         ('description', 265),
         ('cidade', 25),
     ])
