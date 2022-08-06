@@ -37,7 +37,6 @@ class DognCatModelTeste(TestBase):
             author=self.make_author(username='newuser'),
             name='Test Title',
             description='Descript Test',
-            slug='test-slug-1000',
             castracao='Feita',
             porte='Médio',
             cidade='Maceio',)
