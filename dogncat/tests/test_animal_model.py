@@ -33,7 +33,7 @@ class DognCatModelTeste(TestBase):
     def make_dogncat_no_default_field(self):
         """Método para ser utilizado em outros testes sem a adição de nenhum campo Default"""
         animal = Animal(
-            type_of_animal=self.make_animal_type(name='Test Default Type'),
+            type_of_animal='Tipo de ANimal',
             author=self.make_author(username='newuser'),
             title='Test Title',
             description='Descript Test',
