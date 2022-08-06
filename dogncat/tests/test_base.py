@@ -30,7 +30,7 @@ class TestBase(TestCase):
                     peso=5,
                     idade=5,
                     cidade='Maceio',
-                    is_published=True):
+                    is_staff=True):
 
         if author_data == None:
             author_data = {}
