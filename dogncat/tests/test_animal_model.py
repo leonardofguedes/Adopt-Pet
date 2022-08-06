@@ -39,7 +39,7 @@ class DognCatModelTeste(TestBase):
             description='Descript Test',
             slug='test-slug-1000',
             castracao='Feita',
-            peso=5,
+            porte='Médio',
             idade=5,
             cidade='Maceio',)
         animal.full_clean()
