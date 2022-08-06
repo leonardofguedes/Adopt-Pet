@@ -31,8 +31,6 @@ class TestBase(TestCase):
                     idade=5,
                     cidade='Maceio',
                     is_published=True):
-        if animal_type_data == None:
-            animal_type_data = {}
 
         if author_data == None:
             author_data = {}
