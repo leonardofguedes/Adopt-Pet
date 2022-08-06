@@ -37,7 +37,7 @@ class TestBase(TestCase):
         return Animal.objects.create(
             author=self.make_author(**author_data),
             type_of_animal=type_of_animal,
-            title=title,
+            name=name,
             description=description,
             castracao=castracao,
             peso=peso,
