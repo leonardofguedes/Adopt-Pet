@@ -56,7 +56,7 @@ class DognCatModelTeste(TestBase):
     def test_animal_string_representation(self):
         """Testando a representação em String do nome do Animal"""
         needed = 'Testing Representation'
-        self.dogncat.title = 'Testing Representation'
+        self.dogncat.name = 'Testing Representation'
         self.dogncat.full_clean()
         self.dogncat.save()
         self.assertEqual(
