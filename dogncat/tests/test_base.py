@@ -21,8 +21,8 @@ class TestBase(TestCase):
             email=email,
         )
     def make_animal(self,
-                    animal_type_data=None,
                     author_data=None,
+                    type_of_animal='Cachorro',
                     title='Test Title',
                     description='Descript Test',
                     slug='test-slug',
@@ -36,8 +36,8 @@ class TestBase(TestCase):
             author_data = {}
 
         return Animal.objects.create(
-            type_of_animal=self.make_animal_type(**animal_type_data),
             author=self.make_author(**author_data),
+            type_of_animal=type_of_animal,
             title=title,
             description=description,
             slug=slug,
