@@ -27,7 +27,6 @@ class TestBase(TestCase):
                     description='Descript Test',
                     castracao='Feita',
                     porte='Médio',
-                    idade=5,
                     cidade='Maceio',
                     is_staff=True):
 
