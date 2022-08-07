@@ -60,29 +60,6 @@ class HomeViewTest(TestBase):
         response = self.client.get(reverse('dogncat:home'))
         self.assertEqual(response.status_code, 200)
 
-class AnimalTypeViewTest(TestBase):
-    def test_animal_type_view_is_correct(self):
-        """Testando o método view utilizado para animal type"""
-        view = resolve(reverse('dogncat:animal-type', kwargs={'type_id':1}))
-        self.assertIs(view.func, views.by_animal_type_view)
-
-    def test_animal_type_view_with_an_animal(self):
-        """Testando a criação de um animal na página filtrada por Animal Type"""
-        self.make_animal(title='Teste Tipo Animal')
-        response = self.client.get(reverse('dogncat:animal-type', kwargs={'type_id':1}))
-        content = response.content.decode('utf-8')
-        self.assertIn('Teste Tipo Animal', content)
-
-    def test_animal_type_status_with_no_animal(self):
-        """Testando o status code quando não houver animal cadastrado"""
-        response = self.client.get(reverse('dogncat:animal-type', kwargs={'type_id': 1}))
-        self.assertEqual(response.status_code, 404)
-
-    def test_animal_type_status_with_Is_Published_False(self):
-        """Testando o status code com Is Published == False"""
-        self.make_animal(is_published=False)
-        response = self.client.get(reverse('dogncat:animal-type', kwargs={'type_id': 1}))
-        self.assertEqual(response.status_code, 404)
 
 class OneAnimalViewTest(TestBase):
     def test_one_animal_view_is_correct(self):
