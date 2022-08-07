@@ -68,10 +68,11 @@ class OneAnimalViewTest(TestBase):
 
     def test_one_animal_template_loads_fine(self):
         """Testando a página detalhada de animal quando criamos 1 animal"""
-        self.make_animal(description='One Animal Test Template')
+        desc = 'One Animal Test Template'
+        self.make_animal(description= desc)
         response = self.client.get(reverse('dogncat:animal', kwargs={'id':1}))
         content = response.content.decode('utf-8')
-        self.assertIn('One Animal Test Template', content)
+        self.assertIn(desc, content)
 
     def test_one_animal_status_with_no_animal_registered(self):
         """Testando o status code da página quando não houver animal cadastrado"""
