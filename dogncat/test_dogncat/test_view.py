@@ -60,7 +60,6 @@ class HomeViewTest(TestBase):
         response = self.client.get(reverse('dogncat:home'))
         self.assertEqual(response.status_code, 200)
 
-
 class OneAnimalViewTest(TestBase):
     def test_one_animal_view_is_correct(self):
         """Testando o método view utilizado para one animal"""
@@ -79,7 +78,8 @@ class OneAnimalViewTest(TestBase):
         response = self.client.get(reverse('dogncat:animal', kwargs={'id': 1}))
         self.assertEqual(response.status_code, 404)
 
-    def test_one_animal_status_with_Is_Published_False(self):
-        """Testando o status code da página com Is Published == False"""
+    def test_one_animal_status_with_Is_Staff_False(self):
+        """Testando o status code da página com Is Staff == False"""
+        self.make_animal(is_staff=False)
         response = self.client.get(reverse('dogncat:animal', kwargs={'id': 1}))
         self.assertEqual(response.status_code, 404)
