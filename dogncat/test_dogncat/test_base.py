@@ -39,6 +39,7 @@ class AnimalMixin:
             porte=porte,
             cidade=cidade,
             is_staff=is_staff,
+            cover='',
         )
 
 class TestBase(TestCase, AnimalMixin):
