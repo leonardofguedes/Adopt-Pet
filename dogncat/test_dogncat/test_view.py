@@ -3,6 +3,7 @@ from dogncat import views
 from .test_base import TestBase
 from unittest import skip
 
+
 class HomeViewTest(TestBase):
     """Testando o método view utilizado para home"""
     def test_animals_home_view_is_correct(self):
@@ -11,7 +12,7 @@ class HomeViewTest(TestBase):
 
     def test_animal_home_with_animal_registered(self):
         """Testando se o título do animal criado aparece na home"""
-        self.make_animal(title='Test Title')
+        self.make_animal(name='Test Title')
         response = self.client.get(reverse('dogncat:home'))
         content = response.content.decode('utf-8')
         self.assertIn('Test Title', content)
