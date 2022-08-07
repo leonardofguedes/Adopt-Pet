@@ -3,10 +3,7 @@ from dogncat.models import Animal
 from django.contrib.auth.models import User
 
 
-class TestBase(TestCase):
-    def setUp(self) -> None:
-        return super().setUp()
-
+class AnimalMixin:
     def make_author(self,
                     first_name='user',
                     last_name='name',
@@ -43,3 +40,7 @@ class TestBase(TestCase):
             cidade=cidade,
             is_staff=is_staff,
         )
+
+class TestBase(TestCase, AnimalMixin):
+    def setUp(self) -> None:
+        return super().setUp()
