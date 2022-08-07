@@ -12,10 +12,20 @@ class HomeViewTest(TestBase):
 
     def test_animal_home_with_animal_registered(self):
         """Testando se o título do animal criado aparece na home"""
-        self.make_animal(name='Title')
+        self.make_animal()
         response = self.client.get(reverse('dogncat:home'))
         content = response.content.decode('utf-8')
         self.assertIn('Test Title', content)
+
+    def test_home_with_animal(self):
+        """Testando o animal registrado acaso o Is Published seja falso"""
+        name='name-test-name'
+        self.make_animal(name=name)
+        response = self.client.get(reverse('dogncat:home'))
+        self.assertIn(
+            name,
+            response.content.decode('utf-8')
+        )
 
     def test_rental_home_view_loads_template(self):
         """Testando um template carregado em home"""
@@ -47,7 +57,7 @@ class HomeViewTest(TestBase):
 
     def test_home_content_if_is_published_false(self):
         """Testando o animal registrado acaso o Is Published seja falso"""
-        self.make_animal(is_staff=False)
+        self.make_animal(is_staff=False,)
         response = self.client.get(reverse('dogncat:home'))
         self.assertIn(
             '<h1>Nenhum animal cadastrado ainda</h1>',
@@ -56,7 +66,7 @@ class HomeViewTest(TestBase):
 
     def test_home_status_if_is_published_false(self):
         """Testando o animal registrado acaso o Is Published seja falso"""
-        self.make_animal(is_published=False)
+        self.make_animal(is_staff=False)
         response = self.client.get(reverse('dogncat:home'))
         self.assertEqual(response.status_code, 200)
 
