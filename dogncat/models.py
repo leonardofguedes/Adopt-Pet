@@ -20,10 +20,3 @@ class Animal(models.Model):
 
     def __str__(self):
         return self.name
-
-class Photo(models.Model):
-    animal = models.ForeignKey(Animal, default=None, on_delete=models.CASCADE)
-    images = models.FileField(default='', upload_to='images/')
-
-    def __str__(self):
-        return self.animal.name
