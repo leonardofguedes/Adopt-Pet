@@ -1,4 +1,4 @@
-from .models import Animal, Photo
+from .models import Animal
 from django.shortcuts import get_list_or_404, get_object_or_404, render
 from .pagination import make_pagination
 
