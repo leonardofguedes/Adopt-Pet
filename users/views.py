@@ -1,6 +1,7 @@
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from dogncat.models import Animal
 
 
@@ -90,3 +91,13 @@ def newpet(request):
             print('mensagem')
     else:
         return render(request, 'users/pages/pet_add_form.html')
+
+def dashboard_delete(request, id=None):
+    if id is not None:
+        animal = Animal.objects.filter(pk=id).first()
+        animal.delete()
+        messages.success(request, 'Animal deletado')
+        return redirect(reverse('dashboard'))
+    else:
+        messages.error(request, 'Error')
+        return redirect(reverse('dashboard'))
