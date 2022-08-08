@@ -12,8 +12,7 @@ def home_view(request):
 
     return render(request, 'dogncat/pages/home.html',
                   context={
-                  'animals': page_obj,
-                  'pagination_range': pagination_range,
+                  'animals': page_obj
                   })
 
 
