@@ -6,13 +6,9 @@ def home_view(request):
     animals = Animal.objects.filter(
         is_staff=True
     ).order_by('-id')
-
-
-    page_obj, pagination_range = make_pagination(request, animals, 9)
-
     return render(request, 'dogncat/pages/home.html',
                   context={
-                  'animals': page_obj
+                  'animals': animals
                   })
 
 
