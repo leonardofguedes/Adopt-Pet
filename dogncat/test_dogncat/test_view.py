@@ -55,7 +55,7 @@ class HomeViewTest(TestBase):
             response.content.decode('utf-8')
         )
 
-    def test_home_content_if_is_published_false(self):
+    def test_home_content_if_is_staff_false(self):
         """Testando o animal registrado acaso o Is Published seja falso"""
         self.make_animal(is_staff=False,)
         response = self.client.get(reverse('dogncat:home'))
