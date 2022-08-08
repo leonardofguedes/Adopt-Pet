@@ -1,6 +1,7 @@
 {% extends 'users/partials/base_users.html' %}
 {% load static %}
 {% block content %}
+{% include 'users/partials/messages.html' %}
 
 <div class="contact-area section-padding-0-80">
    <div class="container">
@@ -11,7 +12,18 @@
                </div>
                <div>
                    {% for animal in animais %}
-                   {{ animal.name }} <br>
+                   <li>
+                      <a href="{% url 'dashboard' %}">{{ animal.name }}</a> -
+                        <form
+                        class="inline-form form-delete"
+                        action="{% url 'dashboard_delete' id=animal.id %}"
+                        method='POST'
+                        >
+                          {% csrf_token %}
+                          <input type="hidden" name="id" value="{{ animal.id }}">
+                          <button class="plaintext-button" type="submit">❌</button>
+                        </form>
+                   </li>
                    {% empty %}
                    <h3>Você não tem animal cadastrado até o momento.</h3>
                    {% endfor %}
