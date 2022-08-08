@@ -1,7 +1,9 @@
   <div class="card">
     <h2 class="card-title">{{ animal.name }}</h2>
-    <img src="{{ animal.cover.url }}" alt="Temporário">
-    <p class="card-desc">
+      {% if animal.cover %}
+        <img src="{{ animal.cover.url }}" alt="Temporário">
+      {% endif %}
+      <p class="card-desc">
       {{ animal.description }} <br>
       Porte: {{ animal.porte}} <br>
       Castração: {{ animal.castracao }} <br>
