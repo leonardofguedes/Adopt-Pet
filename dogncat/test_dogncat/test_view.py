@@ -17,8 +17,7 @@ class HomeViewTest(TestBase):
         content = response.content.decode('utf-8')
         self.assertIn('Test Title', content)
 
-    def test_home_with_animal(self):
-        """Testando o animal registrado acaso o Is Published seja falso"""
+    def test_home_with_animal_registered(self):
         name='name-test-name'
         self.make_animal(name=name)
         response = self.client.get(reverse('dogncat:home'))
