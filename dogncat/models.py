@@ -11,7 +11,7 @@ class Animal(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_staff = models.BooleanField(default=False)
-    cover = models.ImageField(upload_to='animals/covers/%Y/%m/%d/', blank=True, default='')
+    cover = models.ImageField(upload_to='animals/covers/%Y/%m/%d/', blank=True, null=True, default='')
     photo_detail = models.ImageField(upload_to='animals/photo_detail/%Y/%m/%d/', blank=True, default='')
     photo_detail_two = models.ImageField(upload_to='animals/photo_detail_two/%Y/%m/%d/', blank=True, default='')
     photo_detail_three = models.ImageField(upload_to='animals/photo_detail_three/%Y/%m/%d/', blank=True, default='')
