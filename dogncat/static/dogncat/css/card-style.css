@@ -147,9 +147,25 @@ h1 {
 
 .main-header-container {
     }
+.step-links {
+            color: yellow;
+            }
+.current {
+            color: black;
+            }
+
+.pagination {
+            display: flex;
+            flex-flow: row wrap;
+            gap: 1rem 0.5rem;
+            background: white;
+            color: black;
+            }
 
 @media (max-width: 600px) {
   .main-content-list,
   .form-content-grid {
     grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
   }
+
+
