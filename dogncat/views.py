@@ -1,26 +1,25 @@
 from .models import Animal
-from django.shortcuts import get_list_or_404, get_object_or_404, render
-from .pagination import make_pagination
+from django.shortcuts import get_object_or_404, render
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 def home_view(request):
-    animals = Animal.objects.filter(
+    object_list = Animal.objects.filter(
         is_staff=True
     ).order_by('-id')
+    paginator = Paginator(object_list, 8)
+    page = request.GET.get('page')
+    try:
+        animals = paginator.page(page)
+    except PageNotAnInteger:
+        animals = paginator.page(1)
+    except EmptyPage:
+        animals = paginator.page(paginator.num_pages)
     return render(request, 'dogncat/pages/home.html',
                   context={
-                  'animals': animals
+                  'animals': animals,
+                  'page': page,
                   })
-
-
-def by_animal_type_view(request, type_id):
-    animals = get_list_or_404(
-        Animal.objects.filter(
-            type_of_animal__id=type_id
-        ).order_by('-id')
-    )
-    return render(request, 'dogncat/pages/by_animal_type.html', context={
-        'animals' : animals,
-    })
 
 
 def animal(request, id):
@@ -28,7 +27,7 @@ def animal(request, id):
     photos = [animal.photo_detail, animal.photo_detail_two, animal.photo_detail_three]
     return render(request, 'dogncat/pages/one_only.html', context={
         'animal': animal,
-        'is_detail_page':True,
-        'photos':photos,
+        'is_detail_page': True,
+        'photos': photos,
     })
 
