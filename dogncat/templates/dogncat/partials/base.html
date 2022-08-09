@@ -8,8 +8,9 @@
 <body>
     {% include 'dogncat/partials/header.html' %}
     {% include 'dogncat/partials/navhome.html' %}
-    {% block content %}{% endblock content %}
-
+    <main>
+        {% block content %}{% endblock content %}
+    </main>
      <script src="{% static 'dogncat/js/scripts.js' %}"></script>
 </body>
-
+{% include 'dogncat/partials/pagination.html' with page=animals %}
