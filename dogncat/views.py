@@ -7,7 +7,7 @@ def home_view(request):
     object_list = Animal.objects.filter(
         is_staff=True
     ).order_by('-id')
-    paginator = Paginator(object_list, 8)
+    paginator = Paginator(object_list, 4)
     page = request.GET.get('page')
     try:
         animals = paginator.page(page)
