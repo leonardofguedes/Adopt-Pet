@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Animal(models.Model):
@@ -10,7 +11,7 @@ class Animal(models.Model):
     cidade = models.CharField(max_length=25, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    is_staff = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=True)
     cover = models.ImageField(upload_to='animals/covers/%Y/%m/%d/', blank=True, null=True, default='')
     photo_detail = models.ImageField(upload_to='animals/photo_detail/%Y/%m/%d/', blank=True, default='')
     photo_detail_two = models.ImageField(upload_to='animals/photo_detail_two/%Y/%m/%d/', blank=True, default='')
