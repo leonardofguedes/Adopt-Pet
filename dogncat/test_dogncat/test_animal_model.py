@@ -44,13 +44,6 @@ class DognCatModelTeste(TestBase):
         animal.save()
         return animal
 
-    def test_dogncat_is_published_default(self):
-        """Teste para confirmar o is_published > default = False"""
-        animal = self.make_dogncat_no_default_field()
-        self.assertFalse(
-            animal.is_staff,
-            msg='O is_published default é Falso, não podendo ser omitido esse field'
-        )
 
     def test_animal_string_representation(self):
         """Testando a representação em String do nome do Animal"""
