@@ -1,8 +1,15 @@
 from .models import Animal
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import ListView
 
 
+class HomeView(ListView):
+    queryset = Animal.objects.filter(is_staff=True)
+    context_object_name = 'animals'
+    paginate_by = 4
+    template_name = 'dogncat/pages/home.html'
+"""
 def home_view(request):
     object_list = Animal.objects.filter(
         is_staff=True
@@ -20,7 +27,7 @@ def home_view(request):
                   'animals': animals,
                   'page': page,
                   })
-
+"""
 
 def animal(request, id):
     animal = get_object_or_404(Animal, pk=id, is_staff=True,)
