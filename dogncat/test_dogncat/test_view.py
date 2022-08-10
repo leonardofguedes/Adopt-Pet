@@ -8,7 +8,7 @@ class HomeViewTest(TestBase):
     """Testando o método view utilizado para home"""
     def test_animals_home_view_is_correct(self):
         view = resolve(reverse('dogncat:home'))
-        self.assertIs(view.func, views.home_view)
+        self.assertIs(view.func.view_class, views.HomeView)
 
     def test_animal_home_with_animal_registered(self):
         """Testando se o título do animal criado aparece na home"""
