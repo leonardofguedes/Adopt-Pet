@@ -47,6 +47,7 @@ def login(request):
 
     return render(request, 'users/pages/login.html')
 
+
 def logout(request):
     auth.logout(request)
     return redirect('dogncat:home')
@@ -69,6 +70,7 @@ def newpet(request):
         nome = request.POST['nome']
         description = request.POST['caracteristicas']
         cidade = request.POST['cidade']
+        telephone = request.POST['telephone']
         porte = request.POST['porte']
         castracao = request.POST['castracao']
         type_of_animal = request.POST['tipodeanimal']
@@ -82,7 +84,8 @@ def newpet(request):
             cover=cover,
             type_of_animal=type_of_animal,
             porte=porte,
-            castracao=castracao)
+            castracao=castracao,
+            phone=telephone)
         if animal:
             animal.save()
             messages.success(request, 'Animal cadastrado com sucesso')
@@ -91,6 +94,7 @@ def newpet(request):
             print('mensagem')
     else:
         return render(request, 'users/pages/pet_add_form.html')
+
 
 def dashboard_delete(request, id=None):
     if id is not None:
