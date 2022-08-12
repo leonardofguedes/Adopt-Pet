@@ -161,7 +161,10 @@ h1 {
             background: white;
             color: black;
             }
-
+.tag1       {
+            background: white;
+            color: black;
+}
 @media (max-width: 600px) {
   .main-content-list,
   .form-content-grid {
