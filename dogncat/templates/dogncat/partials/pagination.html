@@ -1,3 +1,4 @@
+{% load animals_tag %}
 <div class="pagination">
     <span class="step-links">
         {% if page.has_previous %}
@@ -11,3 +12,4 @@
     {% endif %}
     </span>
 </div>
+<span class="tag1">Existem {% total_animals %} animais cadastrados nesse site</span>
